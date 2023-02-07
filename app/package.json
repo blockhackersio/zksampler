@@ -1,5 +1,5 @@
 {
-  "name": "@darkpool/frontend",
+  "name": "@zksampler/frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "lint": "NEXT_TELEMETRY_DISABLED=1 next lint"
   },
   "dependencies": {
-    "@darkpool/noir-utils": "workspace:*",
+    "@zksampler/noir-utils": "workspace:*",
     "@next/font": "13.1.1",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
@@ -31,9 +31,9 @@
     "util": "^0.12.5"
   },
   "devDependencies": {
-    "@darkpool/circom": "workspace:*",
-    "@darkpool/evm": "workspace:*",
-    "@darkpool/noir": "workspace:*",
+    "@zksampler/circom": "workspace:*",
+    "@zksampler/evm": "workspace:*",
+    "@zksampler/noir": "workspace:*",
     "autoprefixer": "^10.4.13",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "postcss": "^8.4.21",

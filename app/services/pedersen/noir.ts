@@ -5,7 +5,7 @@ import {
   generateProof,
   pedersenHash,
   utf8StringToHexString,
-} from "@darkpool/noir-utils";
+} from "@zksampler/noir-utils";
 
 export class NoirPedersenProover implements IPedersenProver {
   async generateHash(secret: string): Promise<string> {

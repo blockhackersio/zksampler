@@ -1,5 +1,5 @@
 {
-  "name": "@darkpool/evm",
+  "name": "@zksampler/evm",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@darkpool/circom": "workspace:*",
-    "@darkpool/noir": "workspace:*",
+    "@zksampler/circom": "workspace:*",
+    "@zksampler/noir": "workspace:*",
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/bytes": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",

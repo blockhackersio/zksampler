@@ -1,6 +1,6 @@
 import { IMultiplicationProver } from "./types";
 import { getContractAddress } from "../contracts";
-import { generateProof, verify } from "@darkpool/noir-utils";
+import { generateProof, verify } from "@zksampler/noir-utils";
 
 export class NoirMultiplicationProover implements IMultiplicationProver {
   async generateProof(a: number, b: number, c: number): Promise<string> {

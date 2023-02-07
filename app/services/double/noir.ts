@@ -1,6 +1,6 @@
 import { IDoubleProver } from "./types";
 import { getContractAddress } from "../contracts";
-import { generateProof, verify } from "@darkpool/noir-utils";
+import { generateProof, verify } from "@zksampler/noir-utils";
 
 export class NoirDoubleProover implements IDoubleProver {
   async generateProof(
