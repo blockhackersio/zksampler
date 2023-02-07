@@ -1,0 +1,4 @@
+*.wasm
+*.zkey
+*.buf
+worker.js

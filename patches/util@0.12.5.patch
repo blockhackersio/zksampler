@@ -1,0 +1,24 @@
+diff --git a/package.json b/package.json
+index 2099ec02a63b901d88d26b737c56bb12a65350d7..96b1f49f116ef895f08beb9fb355b998abc05b5e 100644
+--- a/package.json
++++ b/package.json
+@@ -24,6 +24,7 @@
+     "object.entries": "^1.1.0",
+     "run-series": "~1.1.4",
+     "safe-buffer": "^5.1.2",
++    "text-encoding": "0.7.0",
+     "tape": "~4.9.0"
+   },
+   "files": [
+diff --git a/util.js b/util.js
+index 6db393e279126c82e074539649053a2cf314206a..e86f993a733f08b19df12693d87b3d7e55baaa18 100644
+--- a/util.js
++++ b/util.js
+@@ -713,3 +713,7 @@ function callbackify(original) {
+   return callbackified;
+ }
+ exports.callbackify = callbackify;
++
++const { TextDecoder, TextEncoder } = require("text-encoding");
++exports.TextEncoder = TextEncoder;
++exports.TextDecoder = TextDecoder;

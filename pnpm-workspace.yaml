@@ -1,0 +1,6 @@
+packages:
+  - "app"
+  - "circom"
+  - "noir"
+  - "evm"
+  - "noir-utils"

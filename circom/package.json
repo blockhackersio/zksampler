@@ -1,0 +1,19 @@
+{
+  "name": "@darkpool/circom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./scripts/build.sh multiplication && ./scripts/build.sh double && ./scripts/build.sh pedersen",
+    "clean": "./scripts/clean.sh",
+    "prove": "./scripts/prove.sh multiplication && ./scripts/prove.sh double && ./scripts/prove.sh pedersen",
+    "verify": "./scripts/verify.sh multiplication && ./scripts/verify.sh double && ./scripts/verify.sh pedersen",
+    "postinstall": "./scripts/install.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "circomlib": "2.0.5"
+  }
+}

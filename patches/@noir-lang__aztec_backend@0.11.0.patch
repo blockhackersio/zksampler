@@ -1,0 +1,37 @@
+diff --git a/aztec_backend.js b/aztec_backend.js
+index 9b9b13c7d871871709fd26f78472fe6476f4df19..46d31d319312e9914cf42c09a012cfde86306d4b 100644
+--- a/aztec_backend.js
++++ b/aztec_backend.js
+@@ -673,11 +673,26 @@ module.exports.__wbindgen_closure_wrapper178 = function(arg0, arg1, arg2) {
+     return addHeapObject(ret);
+ };
+ 
+-const path = require('path').join(__dirname, 'aztec_backend_bg.wasm');
+-const bytes = require('fs').readFileSync(path);
+ 
+-const wasmModule = new WebAssembly.Module(bytes);
+-const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
+-wasm = wasmInstance.exports;
+-module.exports.__wasm = wasm;
++const isNode = Object.prototype.toString.call(typeof process !== 'undefined' ? process : 0) === '[object process]';
++
++
++if(isNode){
++    const path = require('path').join(__dirname, 'aztec_backend_bg.wasm');
++    const bytes = require('fs').readFileSync(path);
++    
++    const wasmModule = new WebAssembly.Module(bytes);
++    const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
++    wasm = wasmInstance.exports;
++    module.exports.__wasm = wasm;
++} else {
++    fetch('/aztec_backend_bg.wasm')
++        .then(r => r.arrayBuffer())
++        .then(bytes => {
++            const wasmModule = new WebAssembly.Module(bytes);
++            const wasmInstance = new WebAssembly.Instance(wasmModule, imports);
++            wasm = wasmInstance.exports;
++            module.exports.__wasm = wasm;
++        })
++}
+ 

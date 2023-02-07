@@ -1,0 +1,26 @@
+{
+  "name": "circom-darkpool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "dev": "turbo run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "turbo": "^1.6.3"
+  },
+  "packageManager": "pnpm@7.22.0",
+  "pnpm": {
+    "patchedDependencies": {
+      "@noir-lang/barretenberg@2.19.0": "patches/@noir-lang__barretenberg@2.19.0.patch",
+      "util@0.12.5": "patches/util@0.12.5.patch",
+      "@noir-lang/aztec_backend@0.11.0": "patches/@noir-lang__aztec_backend@0.11.0.patch"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+diff --git a/dest/wasm/worker_factory.js b/dest/wasm/worker_factory.js
+index bfa87e5fe8afe29cb425576be0317864e00f9b81..5b87169376d2d0e372f465de12fe506052784ee1 100644
+--- a/dest/wasm/worker_factory.js
++++ b/dest/wasm/worker_factory.js
+@@ -5,7 +5,7 @@ const threads_1 = require("threads");
+ const log_1 = require("../log");
+ async function createWorker(id, module, initial, timeout = 5 * 60 * 1000) {
+     const debug = (0, log_1.createDebugLogger)(`bb:wasm${id ? ':' + id : ''}`);
+-    const thread = await (0, threads_1.spawn)(new threads_1.Worker('./worker.js'), { timeout });
++    const thread = await (0, threads_1.spawn)(new threads_1.Worker('/worker.js'), { timeout });
+     thread.logs().subscribe(debug);
+     await thread.init(module, initial);
+     return thread;

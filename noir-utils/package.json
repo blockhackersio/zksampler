@@ -1,0 +1,22 @@
+{
+  "name": "@darkpool/noir-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@noir-lang/aztec_backend": "0.11.0",
+    "@noir-lang/barretenberg": "2.19.0",
+    "@noir-lang/noir_wasm": "0.11.0",
+    "ethers": "^5.7.2"
+  },
+  "devDependencies": {
+    "typescript": "4.9.4"
+  }
+}
