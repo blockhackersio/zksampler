@@ -1,3 +1,7 @@
+# ZK Sampler
+
+This repo demonstrates various circuits using various ZK protocols
+
 # Requirements
 
 - Node v18.13.0
