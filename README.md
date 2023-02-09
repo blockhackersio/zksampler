@@ -28,7 +28,7 @@ pnpm build --force
 pnpm dev
 ```
 
-# Build and proove circom circuits locally
+# Build and prove circom circuits locally
 
 ```bash
 cd circom
@@ -37,7 +37,7 @@ pnpm prove
 pnpm verify
 ```
 
-# Build and proove noir circuits locally
+# Build and prove noir circuits locally
 
 ```bash
 cd noir
