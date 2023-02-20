@@ -1,6 +1,28 @@
 # ZK Sampler
 
-This repo demonstrates various circuits using various ZK protocols
+This repo demonstrates various circuits using various ZK protocols. It is a work in progress but can act as a good example of how to setup end to end Zero Knowledge Proofs using various proving languages and systems.
+
+So far we have:
+
+- [x] Multiplication of two fields
+  - [x] Noir (TurboPlonk)
+  - [x] Circom (Plonk)
+- [x] Chained multiplication of three fields
+  - [x] Noir (TurboPlonk)
+  - [x] Circom (Plonk)
+- [x] Pederson hash of a secret string
+  - [x] Noir (TurboPlonk)
+  - [x] Circom (Plonk)
+- [ ] Merkle tree inclusion proof
+  - [ ] Noir (TurboPlonk)
+  - [-] Circom (Plonk)
+- [ ] Tornado style Darkpool 
+  - [ ] Noir (TurboPlonk)
+  - [ ] Circom (Plonk)
+- [ ] utx0 Darkpool 
+  - [ ] Noir (TurboPlonk)
+  - [ ] Circom (Plonk)
+
 
 # Requirements
 
