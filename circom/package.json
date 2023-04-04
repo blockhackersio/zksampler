@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./scripts/build.sh multiplication && ./scripts/build.sh double && ./scripts/build.sh pedersen",
+    "build": "./scripts/build.sh multiplication && ./scripts/build.sh double && ./scripts/build.sh pedersen && ./scripts/build.sh transaction",
     "clean": "./scripts/clean.sh",
     "prove": "./scripts/prove.sh multiplication && ./scripts/prove.sh double && ./scripts/prove.sh pedersen",
     "verify": "./scripts/verify.sh multiplication && ./scripts/verify.sh double && ./scripts/verify.sh pedersen",
