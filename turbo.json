@@ -10,6 +10,9 @@
     },
     "dev": {
       "dependsOn": ["^build"]
+    },
+    "@zksampler/evm#dev": {
+      "dependsOn": ["@zksampler/evm#build"]
     }
   }
 }

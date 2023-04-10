@@ -11,6 +11,8 @@ import {
   useNumericFieldChangeCallback,
   useStringFieldChangeCallback,
 } from "@/hooks/utils";
+import { Debug } from "@/ui/Debug";
+import { bench } from "@/services/bench";
 
 type PageState = {
   a: number;
@@ -20,6 +22,7 @@ type PageState = {
   status: "success" | "error" | "reset";
   prooving: boolean;
   validating: boolean;
+  debug: string[];
 };
 
 type PageEvents =
@@ -27,6 +30,8 @@ type PageEvents =
   | { type: "create_proof_complete"; proof: string; pubInput: string }
   | { type: "verify_proof_requested" }
   | { type: "verify_proof_complete"; status: "success" | "error" }
+  | { type: "debug"; payload: string }
+  | { type: "debug_reset" }
   | FieldEventsNum
   | FieldEventsStr;
 
@@ -45,12 +50,13 @@ const initState: PageState = {
   status: "reset",
   prooving: false,
   validating: false,
+  debug: [],
 };
 
 const MultiplicationService = getService();
 
 export default function Home() {
-  const [{ a, b, c, proof, status, prooving, validating }, dispatch] =
+  const [{ a, b, c, proof, status, prooving, validating, debug }, dispatch] =
     useReducer((state: PageState, event: PageEvents): PageState => {
       switch (event.type) {
         case "create_proof_requested": {
@@ -106,6 +112,18 @@ export default function Home() {
             proof: event.value,
           };
         }
+        case "debug": {
+          return {
+            ...state,
+            debug: [...state.debug, event.payload],
+          };
+        }
+        case "debug_reset": {
+          return {
+            ...state,
+            debug: [],
+          };
+        }
         default: {
           return state;
         }
@@ -118,7 +136,10 @@ export default function Home() {
   const onCreateProof = useCallback(async () => {
     if (!MultiplicationService) return;
     dispatch({ type: "create_proof_requested" });
-    const p = await MultiplicationService.generateProof(backend, a, b, c);
+    const [p, duration] = await bench(() =>
+      MultiplicationService.generateProof(backend, a, b, c)
+    );
+    dispatch({ type: "debug", payload: `${backend}-create: ${duration}ms` });
     dispatch({
       type: "create_proof_complete",
       proof: p,
@@ -129,7 +150,11 @@ export default function Home() {
   const onVerifyProof = useCallback(async () => {
     if (!MultiplicationService) return;
     dispatch({ type: "verify_proof_requested" });
-    const isVerified = await MultiplicationService.verify(backend, proof, c);
+
+    const [isVerified, duration] = await bench(() =>
+      MultiplicationService.verify(backend, proof, c)
+    );
+    dispatch({ type: "debug", payload: `${backend}-verify: ${duration}ms` });
     dispatch({
       type: "verify_proof_complete",
       status: isVerified ? "success" : "error",
@@ -152,6 +177,10 @@ export default function Home() {
     "proof_input_changed",
     dispatch
   );
+
+  const handleResetRequested = useCallback(() => {
+    dispatch({ type: "debug_reset" });
+  }, []);
 
   return (
     <PageLayout title="Zero Knowledge" subtitle="Multiplication">
@@ -222,6 +251,11 @@ export default function Home() {
             )}
             {status === "error" && <Alert color="failure">Proof failed</Alert>}
           </Stack>
+        </Card>
+      </Section>
+      <Section>
+        <Card>
+          <Debug debug={debug} onResetRequested={handleResetRequested} />
         </Card>
       </Section>
     </PageLayout>
